@@ -1,0 +1,17 @@
+managed implementation in class zbp_wms_r_0023 unique;
+strict ( 1 );
+
+define behavior for ZWMS_R_0023 //alias <alias_name>
+persistent table zwms_t_0023
+lock master
+authorization master ( instance )
+//etag master <field_name>
+{
+  create;
+  update;
+  delete;
+  field ( numbering : managed, readonly ) Uuid;
+
+  determination create on save { create; }
+
+}

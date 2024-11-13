@@ -1,0 +1,53 @@
+managed implementation in class zbp_wms_r_0004 unique;
+strict ( 1 );
+
+define behavior for ZWMS_R_0004 //alias <alias_name>
+persistent table zwms_t_0004
+lock master
+with additional save
+authorization master ( instance )
+//etag master <field_name>
+{
+  create;
+  update;
+  delete;
+  association _Item { create; }
+
+  field ( numbering : managed, readonly )
+  Headeruuid;
+
+  determination create on save { create; }
+
+  mapping for zwms_t_0004
+    {
+      Headeruuid      = headeruuid;
+      Company         = bukrs;
+      Plant           = werks;
+      DONum           = vbeln_vl;
+      CYStockTransfer = zcy_issue;
+    }
+}
+
+define behavior for ZWMS_R_0004_01 //alias <alias_name>
+persistent table zwms_t_0004_01
+lock dependent by _Header
+with additional save
+authorization dependent by _Header
+//etag master <field_name>
+{
+  update;
+  delete;
+
+  field ( readonly ) Headeruuid;
+  field ( numbering : managed, readonly ) Itemuuid;
+  association _Header;
+
+  mapping for zwms_t_0004_01
+    {
+      Headeruuid      = headeruuid;
+      Itemuuid        = itemuuid;
+      DONum           = vbeln_vl;
+      DOLine          = posnr_vl;
+      StorageLocation = lgort;
+    }
+}

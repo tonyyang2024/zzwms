@@ -1,0 +1,30 @@
+@EndUserText.label: '[WMS] 서비스호출 공통'
+define service ZWMS_SD_COMM {
+  expose ZWMS_R_0001;
+  expose ZWMS_R_0001_02;
+  expose ZWMS_R_0002;
+  expose ZWMS_R_0003;
+  expose ZWMS_R_0003_01;
+  expose ZWMS_R_0004;
+  expose ZWMS_R_0004_01;
+  expose ZWMS_R_0005;
+  expose ZWMS_R_0006;
+  expose ZWMS_R_0007;
+  expose ZWMS_R_0007_01;
+  expose ZWMS_R_0008;
+  expose ZWMS_R_0009;
+  expose ZWMS_R_0009_01;
+  expose ZWMS_R_0010;
+  expose ZWMS_R_0011;
+  expose ZWMS_R_0012;
+  expose ZWMS_R_0013;
+  expose ZWMS_R_0014;
+  expose ZWMS_R_0015;
+  expose ZWMS_R_0016;
+  expose ZWMS_R_0017;
+  expose ZWMS_R_0018;
+  expose ZWMS_R_0019;
+  expose ZWMS_R_0021;
+  expose ZWMS_R_0022;
+  expose ZWMS_R_0023;
+}

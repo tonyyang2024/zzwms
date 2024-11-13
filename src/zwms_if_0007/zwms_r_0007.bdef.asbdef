@@ -1,0 +1,61 @@
+managed implementation in class zbp_wms_r_0007 unique;
+strict ( 2 );
+
+define behavior for ZWMS_R_0007 //alias <alias_name>
+persistent table zwms_t_0007
+lock master
+with additional save
+authorization master ( instance )
+//etag master <field_name>
+{
+  create;
+  update;
+  delete;
+  association _Item { create; }
+
+  field ( numbering : managed, readonly )
+  Headeruuid;
+
+  determination create on save { create; }
+  mapping for zwms_t_0007
+    {
+      Headeruuid            = headeruuid;
+      Deliverydocument      = deliverydocument;
+      ModifyType            = modify_type;
+      IF_CODE               = if_code;
+      IF_MSG                = if_msg;
+      IF_UUID               = if_uuid;
+      IF_FLAG               = if_flag;
+      CREATED_BY            = created_by;
+      CREATED_AT            = created_at;
+      LAST_CHANGED_BY       = last_changed_by;
+      LAST_CHANGED_AT       = last_changed_at;
+      LOCAL_LAST_CHANGED_AT = local_last_changed_at;
+    }
+}
+
+define behavior for ZWMS_R_0007_01 //alias <alias_name>
+persistent table zwms_t_0007_01
+lock dependent by _Header
+with additional save
+authorization dependent by _Header
+//etag master <field_name>
+{
+  update;
+  delete;
+  field ( readonly ) Headeruuid;
+  field ( numbering : managed, readonly ) Itemuuid;
+  association _Header;
+
+  mapping for zwms_t_0007_01
+    {
+      Itemuuid               = itemuuid;
+      Headeruuid             = headeruuid;
+      Deliverydocument       = deliverydocument;
+      Deliverydocumentitem   = deliverydocumentitem;
+      Actualdeliveryquantity = actualdeliveryquantity;
+      IF_CODE                = if_code;
+      IF_MSG                 = if_msg;
+      IF_FLAG                = if_flag;
+    }
+}

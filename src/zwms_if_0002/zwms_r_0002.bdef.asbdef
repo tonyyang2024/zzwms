@@ -1,0 +1,29 @@
+managed implementation in class zbp_wms_r_0002 unique;
+strict ( 1 );
+
+define behavior for ZWMS_R_0002 //alias <alias_name>
+persistent table zwms_t_0002
+lock master
+with additional save
+authorization master ( instance )
+//etag master <field_name>
+{
+  create;
+  update;
+  delete;
+
+//  field ( readonly ) Company, Plant, DONum, DOLine;
+  // 데이터 생성되는 경우 타는 함수
+  determination create on save { create; }
+
+  mapping for zwms_t_0002
+    {
+      Company = bukrs;
+      Plant   = werks;
+      DONum   = donum;
+      DOLine  = doline;
+      PartNum = partnum;
+      Qty     = qty;
+      VRKME   = vrkme;
+    }
+}

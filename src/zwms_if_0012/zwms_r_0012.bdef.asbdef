@@ -1,0 +1,44 @@
+managed implementation in class zbp_wms_r_0012 unique;
+strict ( 1 );
+
+define behavior for ZWMS_R_0012 //alias <alias_name>
+persistent table zwms_t_0012
+lock master
+with additional save
+authorization master ( instance )
+//etag master <field_name>
+{
+  create;
+  update;
+  delete;
+  field ( readonly, numbering : managed ) uuid;
+
+  // 데이터 생성되는 경우 타는 함수
+  determination create on save { create; }
+
+  mapping for zwms_t_0012
+    {
+      UUID                  = uuid;
+      Company               = companycode;
+      Plant                 = plant;
+      PartNum               = partnum;
+      VendorID              = vendorid;
+      Quantity              = quantity;
+      IUM                   = ium;
+      FromWhse              = fromwhse;
+      ToWhse                = towhse;
+      InspectorID           = inspectorid;
+      DMRReasonCode         = dmrreasoncode;
+      DOCUMENT_YEAR         = document_year;
+      DOCUMENT_NUM          = document_num;
+      IF_FLAG               = if_flag;
+      IF_UUID               = if_uuid;
+      IF_CODE               = if_code;
+      IF_MSG                = if_msg;
+      CREATED_BY            = created_by;
+      CREATED_AT            = created_at;
+      LAST_CHANGED_BY       = last_changed_by;
+      LAST_CHANGED_AT       = last_changed_at;
+      LOCAL_LAST_CHANGED_AT = local_last_changed_at;
+    }
+}
